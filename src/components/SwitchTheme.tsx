@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 export const SwitchTheme = () => {
-  const [theme, setTheme] = useState("emerald");
+  const [theme, setTheme] = useState("dark");
 
   // Function to toggle theme
   const toggleTheme = () => {
@@ -14,7 +14,7 @@ export const SwitchTheme = () => {
 
   // Set initial theme on component mount
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "emerald"; // Default to emerald
+    const savedTheme = localStorage.getItem("theme") || "dark"; // Default to dark
     setTheme(savedTheme);
     document.documentElement.setAttribute("data-theme", savedTheme);
   }, []);

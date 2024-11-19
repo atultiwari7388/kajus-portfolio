@@ -12,11 +12,12 @@ import Contact from "@/components/Contact";
 import ResumeExperience from "@/components/ResumeExperience";
 import Footer from "@/components/Footer";
 import FollowMe from "@/components/FollowMe";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const springConfig = { damping: 25, stiffness: 700 };
   const cursorXSpring = useSpring(cursorX, springConfig);
@@ -28,10 +29,20 @@ export default function Home() {
       cursorY.set(e.clientY - 16);
     };
 
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
     window.addEventListener("mousemove", moveCursor);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [cursorX, cursorY]);
 
@@ -55,6 +66,13 @@ export default function Home() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <main className="scroll-smooth">
       <motion.div
@@ -74,6 +92,34 @@ export default function Home() {
       <ResumeExperience handleDownloadCV={handleDownloadCV} />
       <FollowMe />
       <Footer />
+
+      {showScrollTop && (
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 p-3 bg-primary rounded-full shadow-lg hover:bg-primary/80 transition-colors z-50 group"
+          aria-label="Back to top"
+        >
+          <div className="tooltip tooltip-left absolute right-full mr-2 invisible group-hover:visible">
+            Back to top
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 10l7-7m0 0l7 7m-7-7v18"
+            />
+          </svg>
+        </motion.button>
+      )}
     </main>
   );
 }

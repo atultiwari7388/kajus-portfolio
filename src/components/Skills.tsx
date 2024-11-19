@@ -39,7 +39,7 @@ export default function Skills() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-8xl font-black mb-8 bg-gradient-to-r from-primary via-purple-500 to-secondary bg-clip-text text-transparent drop-shadow-lg">
+          <h2 className="text-8xl font-black mb-8 bg-gradient-to-r from-primary via-purple-500 to-secondary bg-clip-text text-transparent drop-shadow-lg whitespace-nowrap">
             My Skills
           </h2>
           <p className="text-base-content/70 text-2xl max-w-4xl mx-auto leading-relaxed font-light">
@@ -61,7 +61,7 @@ export default function Skills() {
             </h3>
             <div className="space-y-8">
               {[
-                { name: "React/Next.js", level: "90%" },
+                { name: "React/Next.js", level: "70%" },
                 { name: "Flutter", level: "90%" },
                 { name: "Node.js", level: "65%" },
                 { name: "TypeScript", level: "60%" },
@@ -119,6 +119,8 @@ export default function Skills() {
                 { name: "Project Management", icon: "📊" },
                 { name: "Adaptability", icon: "🔄" },
                 { name: "Critical Thinking", icon: "🧠" },
+                { name: "Individual Project Handling", icon: "🎨" },
+                { name: "Code Refactoring", icon: "♻️" },
               ].map((skill, index) => (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}

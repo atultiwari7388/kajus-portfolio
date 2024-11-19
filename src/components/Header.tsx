@@ -12,10 +12,32 @@ export default function Header({ scrollToSection }: HeaderProps) {
       animate={{ y: 0 }}
       className="fixed top-0 left-0 right-0 z-50 mx-2 mt-2 rounded-xl border border-base-300 flex items-center justify-between px-4 py-4 bg-base-100/80 backdrop-blur-sm shadow-lg"
     >
-      <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
-        <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent hover:from-secondary hover:to-primary transition-all duration-500">
-          Atul Tiwari
-        </h3>
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        className="flex items-center gap-2"
+      >
+        <motion.span
+          animate={{
+            rotate: [0, 10, -10, 0],
+            y: [0, -3, 3, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="text-2xl"
+        >
+          👋
+        </motion.span>
+        <motion.span
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent hover:from-secondary hover:to-primary transition-all duration-500"
+        >
+          Hello!
+        </motion.span>
       </motion.div>
 
       <div className="hidden md:flex items-center">

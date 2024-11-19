@@ -2,23 +2,12 @@ import { motion } from "framer-motion";
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20 bg-base-100 relative overflow-hidden">
+    <section id="skills" className="py-32 bg-base-100 relative overflow-hidden">
       {/* Animated background elements */}
       <motion.div
         animate={{
           rotate: [0, 360],
-          opacity: [0.1, 0.3, 0.1],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        className="absolute top-20 right-20 w-72 h-72 rounded-full border-4 border-dashed border-primary/20"
-      />
-      <motion.div
-        animate={{
-          rotate: [360, 0],
+          scale: [0.8, 1.2, 0.8],
           opacity: [0.1, 0.3, 0.1],
         }}
         transition={{
@@ -26,38 +15,51 @@ export default function Skills() {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute bottom-20 left-20 w-96 h-96 rounded-full border-4 border-dashed border-secondary/20"
+        className="absolute top-20 right-20 w-[40rem] h-[40rem] rounded-full border-8 border-dashed border-primary/20 blur-md"
+      />
+      <motion.div
+        animate={{
+          rotate: [360, 0],
+          scale: [1.2, 0.8, 1.2],
+          opacity: [0.1, 0.3, 0.1],
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="absolute bottom-20 -left-20 w-[30rem] h-[30rem] rounded-full border-8 border-dashed border-secondary/20 blur-md"
       />
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h2 className="text-8xl font-black mb-8 bg-gradient-to-r from-primary via-purple-500 to-secondary bg-clip-text text-transparent drop-shadow-lg">
             My Skills
           </h2>
-          <p className="text-base-content/70 text-lg">
-            Technologies and skills I work with
+          <p className="text-base-content/70 text-2xl max-w-4xl mx-auto leading-relaxed font-light">
+            Technologies and expertise I&apos;ve mastered throughout my journey
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto">
           {/* Technical Skills */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="space-y-8 bg-base-200/50 p-8 rounded-3xl backdrop-blur-sm border border-primary/10 hover:border-primary/30 transition-all duration-300 shadow-xl hover:shadow-primary/20"
+            className="space-y-8 bg-gradient-to-br from-base-200/50 via-base-200/30 to-base-200/50 p-10 rounded-3xl backdrop-blur-xl border-2 border-primary/10 hover:border-primary/30 transition-all duration-500 shadow-lg hover:shadow-xl"
           >
-            <h3 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <h3 className="text-4xl font-bold mb-10 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Technical Skills
             </h3>
-            <div className="space-y-6">
+            <div className="space-y-8">
               {[
                 { name: "React/Next.js", level: "90%" },
                 { name: "Flutter", level: "90%" },
@@ -69,15 +71,15 @@ export default function Skills() {
                 { name: "MongoDB", level: "60%" },
               ].map((skill, index) => (
                 <motion.div
-                  key={skill.name}
-                  initial={{ width: "0%" }}
-                  whileInView={{ width: "100%" }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="group hover:scale-105 transition-all duration-300"
+                  key={skill.name}
+                  className="group hover:translate-x-2 transition-all duration-300"
                 >
-                  <div className="flex justify-between mb-2">
-                    <span className="font-bold text-lg group-hover:text-primary transition-colors">
+                  <div className="flex justify-between mb-3">
+                    <span className="font-bold text-xl group-hover:text-primary transition-colors">
                       {skill.name}
                     </span>
                     <span className="text-base-content/70 font-medium">
@@ -88,12 +90,10 @@ export default function Skills() {
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: skill.level }}
-                      transition={{ duration: 1, delay: index * 0.1 }}
+                      transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
                       viewport={{ once: true }}
-                      className="h-full rounded-full bg-gradient-to-r from-primary via-primary/80 to-secondary relative"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
-                    </motion.div>
+                      className="h-full rounded-full bg-gradient-to-r from-primary to-secondary"
+                    />
                   </div>
                 </motion.div>
               ))}
@@ -104,34 +104,36 @@ export default function Skills() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="space-y-8 bg-base-200/50 p-8 rounded-3xl backdrop-blur-sm border border-secondary/10 hover:border-secondary/30 transition-all duration-300 shadow-xl hover:shadow-secondary/20"
+            className="space-y-8 bg-gradient-to-br from-base-200/50 via-base-200/30 to-base-200/50 p-10 rounded-3xl backdrop-blur-xl border-2 border-secondary/10 hover:border-secondary/30 transition-all duration-500 shadow-lg hover:shadow-xl"
           >
-            <h3 className="text-3xl font-bold mb-8 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+            <h3 className="text-4xl font-bold mb-10 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
               Soft Skills
             </h3>
             <div className="grid grid-cols-2 gap-6">
               {[
-                "Problem Solving",
-                "Communication",
-                "Team Leadership",
-                "Project Management",
-                "Adaptability",
-                "Critical Thinking",
+                { name: "Problem Solving", icon: "🎯" },
+                { name: "Communication", icon: "💬" },
+                { name: "Team Leadership", icon: "👥" },
+                { name: "Project Management", icon: "📊" },
+                { name: "Adaptability", icon: "🔄" },
+                { name: "Critical Thinking", icon: "🧠" },
               ].map((skill, index) => (
                 <motion.div
-                  key={skill}
-                  initial={{ opacity: 0, scale: 0.5 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.05, rotate: [0, 2, -2, 0] }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="p-6 rounded-2xl bg-gradient-to-br from-base-100 to-base-200 shadow-lg hover:shadow-primary/20 transition-all duration-300 border border-primary/10 hover:border-primary/30 group"
+                  key={skill.name}
+                  className="p-6 rounded-2xl bg-gradient-to-br from-base-100/50 to-base-200/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-primary/10 hover:border-primary/30 group hover:-translate-y-1"
                 >
-                  <span className="font-bold text-lg group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
-                    {skill}
-                  </span>
+                  <div className="flex flex-col items-center text-center gap-3">
+                    <span className="text-3xl">{skill.icon}</span>
+                    <span className="font-bold text-lg group-hover:text-primary transition-colors duration-200">
+                      {skill.name}
+                    </span>
+                  </div>
                 </motion.div>
               ))}
             </div>

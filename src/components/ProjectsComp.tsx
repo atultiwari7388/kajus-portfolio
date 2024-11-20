@@ -145,29 +145,17 @@ export default function ProjectsComp() {
       className="py-32 bg-base-100 relative overflow-hidden"
     >
       {/* Background elements */}
-      <motion.div
-        animate={{
-          rotate: [0, 360],
-          scale: [0.8, 1.2, 0.8],
-          opacity: [0.1, 0.4, 0.1],
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        className="absolute top-20 right-20 w-[40rem] h-[40rem] rounded-full border-8 border-dashed border-primary/20 blur-md"
-      />
+      <div className="absolute top-20 right-20 w-[40rem] h-[40rem] rounded-full border-8 border-dashed border-primary/20 blur-md" />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-8xl font-black mb-8 bg-gradient-to-r from-primary via-purple-500 to-secondary bg-clip-text text-transparent drop-shadow-lg">
+          <h2 className="text-5xl font-black mb-8 bg-gradient-to-r from-primary via-purple-500 to-secondary bg-clip-text text-transparent drop-shadow-lg">
             Project Gallery
           </h2>
           <p className="text-base-content/70 text-2xl max-w-4xl mx-auto leading-relaxed font-light">
@@ -181,13 +169,10 @@ export default function ProjectsComp() {
           {/* Timeline dots */}
           <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-base-300">
             {projects.slice(0, visibleProjects).map((_, index) => (
-              <motion.div
+              <div
                 key={index}
                 className="absolute w-4 h-4 bg-primary rounded-full -left-1.5"
                 style={{ top: `${(index * 100) / (visibleProjects - 1)}%` }}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: index * 0.2 }}
               />
             ))}
           </div>
@@ -196,32 +181,20 @@ export default function ProjectsComp() {
           {projects.slice(0, visibleProjects).map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              transition={{ duration: 0.4 }}
+              viewport={{ once: true }}
               className={`flex items-center gap-8 mb-20 ${
                 index % 2 === 0 ? "flex-row" : "flex-row-reverse"
               }`}
             >
               {/* Project Card */}
               <div
-                className={`w-[calc(100%-2rem)] p-8 bg-gradient-to-br from-base-200/50 via-base-200/30 to-base-200/50 rounded-2xl backdrop-blur-xl border-2 border-${project.borderColor}/10 hover:border-${project.borderColor}/40 transition-all duration-500 shadow-lg hover:shadow-xl group`}
+                className={`w-[calc(100%-2rem)] p-8 bg-gradient-to-br from-base-200/50 via-base-200/30 to-base-200/50 rounded-2xl backdrop-blur-xl border-2 border-${project.borderColor}/10 hover:border-${project.borderColor}/40 transition-all duration-300 shadow-lg hover:shadow-xl group`}
               >
                 <div className="flex items-center gap-6">
-                  <motion.div
-                    className="text-5xl"
-                    animate={{
-                      y: [0, -5, 0],
-                      rotate: [0, 5, -5, 0],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    {project.icon}
-                  </motion.div>
+                  <span className="text-5xl">{project.icon}</span>
                   <div>
                     <h3
                       className={`text-2xl font-bold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}
@@ -246,27 +219,23 @@ export default function ProjectsComp() {
               </div>
 
               {/* Arrow */}
-              <motion.div
+              <div
                 className={`text-2xl ${index % 2 === 0 ? "rotate-180" : ""}`}
-                animate={{ x: [0, 10, 0] }}
-                transition={{ duration: 1, repeat: Infinity }}
               >
                 →
-              </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>
 
         {/* Load More Button */}
         {visibleProjects < projects.length && (
-          <motion.button
+          <button
             onClick={loadMore}
-            className="mx-auto mt-12 block px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="mx-auto mt-12 block px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
             Show More Projects
-          </motion.button>
+          </button>
         )}
       </div>
     </section>

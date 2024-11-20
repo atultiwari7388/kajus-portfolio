@@ -13,6 +13,7 @@ import ResumeExperience from "@/components/ResumeExperience";
 import Footer from "@/components/Footer";
 import FollowMe from "@/components/FollowMe";
 import { useEffect, useState } from "react";
+import ProfessionalExperience from "@/components/ProfessionalExperience";
 
 export default function Home() {
   const cursorX = useMotionValue(-100);
@@ -88,11 +89,11 @@ export default function Home() {
       <Skills />
       <ProjectsComp />
       <AchievementsComp />
+      <ProfessionalExperience />
       <Contact />
       <ResumeExperience handleDownloadCV={handleDownloadCV} />
       <FollowMe />
       <Footer />
-
       {showScrollTop && (
         <motion.button
           initial={{ opacity: 0 }}
@@ -101,9 +102,6 @@ export default function Home() {
           className="fixed bottom-8 right-8 p-3 bg-primary rounded-full shadow-lg hover:bg-primary/80 transition-colors z-50 group"
           aria-label="Back to top"
         >
-          <div className="tooltip tooltip-left absolute right-full mr-2 invisible group-hover:visible">
-            Back to top
-          </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 text-white"

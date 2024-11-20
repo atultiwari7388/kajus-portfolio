@@ -14,6 +14,7 @@ import Footer from "@/components/Footer";
 import FollowMe from "@/components/FollowMe";
 import { useEffect, useState } from "react";
 import ProfessionalExperience from "@/components/ProfessionalExperience";
+import PersonalInterest from "@/components/PersonalInterest";
 
 export default function Home() {
   const cursorX = useMotionValue(-100);
@@ -86,12 +87,13 @@ export default function Home() {
       <Header scrollToSection={scrollToSection} />
       <HeroComponent handleDownloadCV={handleDownloadCV} />
       <AboutComponent />
+      <ProfessionalExperience />
       <Skills />
       <ProjectsComp />
       <AchievementsComp />
-      <ProfessionalExperience />
-      <Contact />
       <ResumeExperience handleDownloadCV={handleDownloadCV} />
+      <PersonalInterest />
+      <Contact />
       <FollowMe />
       <Footer />
       {showScrollTop && (
@@ -99,7 +101,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-3 bg-primary rounded-full shadow-lg hover:bg-primary/80 transition-colors z-50 group"
+          className="fixed bottom-8 right-8 p-3 bg-primary rounded-full shadow-lg hover:bg-primary/80 transition-colors z-50"
           aria-label="Back to top"
         >
           <svg

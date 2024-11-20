@@ -88,7 +88,8 @@ export default function ProfessionalExperience() {
 
           {[
             {
-              title: "Flutter Developer at Mylext Infotech",
+              title:
+                "Flutter Developer at Mylext Infotech (Feb 2023 - Present)",
               description:
                 "Specialized in implementing complex REST APIs, Firebase integration, Cloud Functions, Google Maps, and Push Notifications. Built scalable mobile applications with real-time features and location-based services.",
               icon: "📱",

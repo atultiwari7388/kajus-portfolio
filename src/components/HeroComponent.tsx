@@ -13,95 +13,6 @@ export default function HeroComponent({
         id="home"
         className="min-h-screen pt-32 px-4 md:px-8 lg:px-16 bg-base-100 relative overflow-hidden"
       >
-        {/* Enhanced background code animation */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="text-[4vw] font-black text-primary relative"
-          >
-            <motion.span
-              initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                repeatType: "reverse",
-                ease: "easeInOut",
-              }}
-              style={{
-                display: "block",
-                overflow: "hidden",
-                borderRight: "0.25em solid #fff",
-                whiteSpace: "pre",
-              }}
-            >
-              {`
-              const Portfolio = () => {
-                return (
-                  <div>
-                    <h1>Welcome!</h1>
-                    <p>Let's build something amazing</p>
-                  </div>
-                );
-              };
-              `}
-            </motion.span>
-          </motion.h1>
-        </div>
-
-        {/* Dynamic background elements */}
-        <motion.div
-          animate={{
-            rotate: [0, 360],
-            scale: [0.8, 1.2, 0.8],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-20 right-20 w-[45rem] h-[45rem] rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 blur-3xl"
-        />
-
-        <motion.div
-          animate={{
-            rotate: [360, 0],
-            scale: [1.2, 0.8, 1.2],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-20 -left-20 w-[35rem] h-[35rem] rounded-full bg-gradient-to-l from-secondary/20 to-primary/20 blur-3xl"
-        />
-
-        {/* Floating particles */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{
-              y: [0, -20, 0],
-              x: [0, 10, 0],
-              opacity: [0.5, 1, 0.5],
-            }}
-            transition={{
-              duration: 3 + i,
-              repeat: Infinity,
-              delay: i * 0.5,
-            }}
-            className="absolute w-4 h-4 rounded-full bg-primary/30 blur-sm"
-            style={{
-              top: `${20 + i * 15}%`,
-              left: `${10 + i * 15}%`,
-            }}
-          />
-        ))}
-
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
@@ -176,35 +87,35 @@ export default function HeroComponent({
               </motion.button>
             </motion.div>
 
-            {/* Center Image with enhanced effects */}
+            {/* Center Image with glowing border effect */}
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
               className="relative flex justify-center"
             >
-              <motion.div
-                animate={{
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 10, -10, 0],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute inset-0 bg-gradient-to-r from-primary via-purple-500 to-secondary rounded-full blur-3xl opacity-25"
-              ></motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-8 border-base-300 hover:border-primary transition-all duration-500 shadow-2xl hover:shadow-primary/30"
-              >
-                <img
-                  src="/3rd.jpg"
-                  alt="Atul Tiwari"
-                  className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
+              <div className="relative w-72 h-72 md:w-96 md:h-96">
+                {/* Animated glowing corners */}
+                <motion.div
+                  className="absolute -inset-1 bg-gradient-to-r from-primary via-purple-500 to-secondary rounded-full opacity-75 blur-lg"
+                  animate={{
+                    opacity: [0.5, 0.8, 0.5],
+                    scale: [0.98, 1.02, 0.98],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                 />
-              </motion.div>
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-base-100 p-2">
+                  <img
+                    src="/3rd.jpg"
+                    alt="Atul Tiwari"
+                    className="w-full h-full rounded-full object-cover transform hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+              </div>
 
               {/* Enhanced Social Links */}
               <motion.ul

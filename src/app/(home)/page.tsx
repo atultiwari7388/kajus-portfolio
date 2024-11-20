@@ -15,6 +15,7 @@ import FollowMe from "@/components/FollowMe";
 import { useEffect, useState } from "react";
 import ProfessionalExperience from "@/components/ProfessionalExperience";
 import PersonalInterest from "@/components/PersonalInterest";
+import TimeLine from "@/components/TimeLine";
 
 export default function Home() {
   const cursorX = useMotionValue(-100);
@@ -26,57 +27,65 @@ export default function Home() {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 16);
-      cursorY.set(e.clientY - 16);
-    };
+    if (typeof window !== "undefined") {
+      const moveCursor = (e: MouseEvent) => {
+        cursorX.set(e.clientX - 16);
+        cursorY.set(e.clientY - 16);
+      };
 
-    const handleScroll = () => {
-      if (window.scrollY > 400) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
-    };
+      const handleScroll = () => {
+        if (window.scrollY > 400) {
+          setShowScrollTop(true);
+        } else {
+          setShowScrollTop(false);
+        }
+      };
 
-    window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("scroll", handleScroll);
+      window.addEventListener("mousemove", moveCursor);
+      window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("mousemove", moveCursor);
-      window.removeEventListener("scroll", handleScroll);
-    };
+      return () => {
+        window.removeEventListener("mousemove", moveCursor);
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
   }, [cursorX, cursorY]);
 
   const handleDownloadCV = () => {
-    // Create a link element
-    const link = document.createElement("a");
-    link.href = "/my_resume.pdf";
-    link.download = "my_resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    if (typeof window !== "undefined") {
+      const link = document.createElement("a");
+      link.href = "/my_resume.pdf";
+      link.download = "my_resume.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+    if (typeof window !== "undefined") {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
     }
   };
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    if (typeof window !== "undefined") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
     <main className="scroll-smooth">
+      {/* Custom cursor */}
       <motion.div
         className="fixed w-8 h-8 bg-primary/30 rounded-full mix-blend-difference pointer-events-none z-50"
         style={{
@@ -87,21 +96,24 @@ export default function Home() {
       <Header scrollToSection={scrollToSection} />
       <HeroComponent handleDownloadCV={handleDownloadCV} />
       <AboutComponent />
-      <ProfessionalExperience />
-      <Skills />
       <ProjectsComp />
+      <Skills />
+      <ProfessionalExperience />
       <AchievementsComp />
+      <TimeLine />
       <ResumeExperience handleDownloadCV={handleDownloadCV} />
       <PersonalInterest />
       <Contact />
       <FollowMe />
       <Footer />
+      {/* Scroll to top button */}
       {showScrollTop && (
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          whileHover={{ scale: 1.1 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-3 bg-primary rounded-full shadow-lg hover:bg-primary/80 transition-colors z-50"
+          className="fixed bottom-8 right-8 p-3 bg-primary rounded-full shadow-lg hover:bg-primary/80 transition-all duration-300 z-50"
           aria-label="Back to top"
         >
           <svg

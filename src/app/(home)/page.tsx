@@ -17,6 +17,7 @@ import ProfessionalExperience from "@/components/ProfessionalExperience";
 import PersonalInterest from "@/components/PersonalInterest";
 import TimeLine from "@/components/TimeLine";
 import ToolsTechnology from "@/components/ToolsTechnology";
+// import PricingSection from "@/components/PricingSection";
 
 export default function Home() {
   const cursorX = useMotionValue(-100);
@@ -105,6 +106,7 @@ export default function Home() {
       <TimeLine />
       <ResumeExperience handleDownloadCV={handleDownloadCV} />
       <PersonalInterest />
+      {/* <PricingSection /> */}
       <Contact />
       <FollowMe />
       <Footer />

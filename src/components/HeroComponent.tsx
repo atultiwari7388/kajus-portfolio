@@ -1,12 +1,44 @@
 /* eslint-disable @next/next/no-img-element */
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function HeroComponent({
   handleDownloadCV,
 }: {
   handleDownloadCV: () => void;
 }) {
+  const [skillIndex, setSkillIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const skills = [
+    "Full Stack Developer",
+    "Mobile App Developer",
+    "Web Developer",
+    "UI/UX Designer",
+    "Cloud Expert",
+    "API Developer",
+    "Frontend Developer",
+    "Backend Developer",
+  ];
+
+  useEffect(() => {
+    const text = skills[skillIndex];
+    let currentIndex = 0;
+
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= text.length) {
+        setDisplayText(text.substring(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+        setTimeout(() => {
+          setSkillIndex((prev) => (prev + 1) % skills.length);
+        }, 2000);
+      }
+    }, 100);
+
+    return () => clearInterval(typingInterval);
+  }, [skillIndex]);
+
   return (
     <>
       <section
@@ -29,7 +61,8 @@ export default function HeroComponent({
                 className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20 backdrop-blur-sm"
               >
                 <h2 className="text-2xl md:text-3xl font-medium bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  Full Stack Web & App Developer
+                  {displayText}
+                  <span className="animate-blink">|</span>
                 </h2>
               </motion.div>
 
@@ -56,35 +89,66 @@ export default function HeroComponent({
                 </p>
               </motion.div>
 
-              {/* Enhanced Download CV Button */}
-              <motion.button
-                onClick={handleDownloadCV}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9 }}
-                className="btn btn-primary btn-lg rounded-full px-10 relative group hover:shadow-xl hover:shadow-primary/30"
-              >
-                <span className="absolute inset-0 rounded-full bg-primary opacity-30 group-hover:animate-ping"></span>
-                <span className="relative flex items-center gap-3 text-lg">
-                  Download CV
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 animate-bounce"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                    />
-                  </svg>
-                </span>
-              </motion.button>
+              <div className="flex gap-4 flex-wrap">
+                {/* Download CV Button */}
+                <motion.button
+                  onClick={handleDownloadCV}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9 }}
+                  className="btn btn-primary btn-lg rounded-full px-10 relative group hover:shadow-xl hover:shadow-primary/30"
+                >
+                  <span className="absolute inset-0 rounded-full bg-primary opacity-30 group-hover:animate-ping"></span>
+                  <span className="relative flex items-center gap-3 text-lg">
+                    Download CV
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 animate-bounce"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                  </span>
+                </motion.button>
+
+                {/* Let's Build Together Button */}
+                <motion.a
+                  href="#contact"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.1 }}
+                  className="btn btn-outline btn-secondary btn-lg rounded-full px-10 group hover:shadow-xl"
+                >
+                  <span className="relative flex items-center gap-3 text-lg">
+                    Let&apos;s Build Together
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 group-hover:translate-x-2 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </span>
+                </motion.a>
+              </div>
             </motion.div>
 
             {/* Center Image with glowing border effect */}

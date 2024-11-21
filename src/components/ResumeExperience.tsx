@@ -116,7 +116,7 @@ export default function ResumeExperience({
               </div>
               <ul className="space-y-4 md:space-y-6 text-base md:text-lg">
                 {[
-                  "3+ years in Flutter Development",
+                  "2+ years in Flutter Development",
                   "Full-stack Firebase expertise",
                   "Modern app architecture",
                   "React & Next.js mastery",

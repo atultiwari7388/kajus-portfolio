@@ -81,15 +81,17 @@ export default function AboutComponent() {
                 className="prose prose-lg dark:prose-invert"
               >
                 <p className="text-xl leading-relaxed text-gray-600 dark:text-gray-300">
-                  Hey! I&apos;m a Full Stack Developer who loves turning ideas
-                  into reality through code. My passion lies in crafting elegant
-                  solutions that make a real difference in people&apos;s lives.
+                  Hey! I&apos;m a Full Stack Developer with over 2 years of
+                  experience in Flutter development. Recently, I&apos;ve
+                  expanded my expertise into MERN stack development, which
+                  I&apos;ve been actively pursuing for the past 3 months.
                 </p>
                 <p className="text-xl leading-relaxed text-gray-600 dark:text-gray-300">
-                  When I&apos;m not immersed in code, you&apos;ll find me
-                  exploring nature and capturing stunning timelapses of the
-                  night sky. This blend of technology and creativity fuels my
-                  innovative approach to development.
+                  My journey started with mobile development using Flutter,
+                  where I&apos;ve built numerous production-ready applications.
+                  Now, I&apos;m passionate about combining my mobile expertise
+                  with web development using the MERN stack to create
+                  comprehensive full-stack solutions.
                 </p>
               </motion.div>
 
@@ -111,14 +113,14 @@ export default function AboutComponent() {
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {[
-                    "React",
-                    "Next.js",
                     "Flutter",
-                    "TypeScript",
-                    "Node.js",
                     "Firebase",
-                    "Cloud Functions",
-                    "Rest API's",
+                    "MongoDB",
+                    "Express.js",
+                    "React",
+                    "Node.js",
+                    "Next.js",
+                    "TypeScript",
                   ].map((skill, index) => (
                     <motion.span
                       key={skill}
@@ -184,9 +186,9 @@ export default function AboutComponent() {
                 >
                   <span className="text-3xl font-bold">2+</span>
                   <p className="text-sm">
-                    Years of
+                    Years in
                     <br />
-                    Experience
+                    Flutter
                   </p>
                 </motion.div>
               </motion.div>

@@ -35,10 +35,10 @@ export default function TimeLine() {
       gradient: "from-amber-500 to-orange-400",
     },
     {
-      year: "2019",
-      title: "Found My Comfort Zone, Understanding & Inspiration",
+      year: "2020",
+      title: "Met Someone Special",
       description:
-        "First time I saw her smile and fell in love. Named her Devsena for her strong attitude that I admire. She became my inspiration and motivation to grow.",
+        "First time I saw her smile and I remember I don't know her name but I call her green mask pink bag. Named her Devsena for her strong attitude that I admire. She became my inspiration and motivation to grow.",
       icon: "💝",
       gradient: "from-pink-500 to-rose-400",
     },

@@ -12,7 +12,7 @@ const projects = [
     description:
       "A cutting-edge IoT platform enabling users to control their entire home ecosystem through an intuitive mobile interface. Features include smart device integration, energy monitoring, and AI-powered automation routines.",
     icon: "🏠",
-    tags: ["Flutter", "Provider", "Firebase", "IoT", "Machine Learning"],
+    tags: ["Flutter", "Provider", "Firebase"],
     gradient: "from-primary to-secondary",
     borderColor: "primary",
   },
@@ -81,7 +81,7 @@ const projects = [
     description:
       "A lightning-fast grocery delivery platform promising delivery within 15 minutes. Features inventory management, dark store operations, and predictive stocking algorithms.",
     icon: "🛒",
-    tags: ["Flutter", "Firebase", "Cloud Functions", "Machine Learning"],
+    tags: ["Flutter", "Firebase", "Cloud Functions"],
     gradient: "from-accent to-primary",
     borderColor: "accent",
   },
@@ -96,7 +96,8 @@ const projects = [
       "Firebase",
       "Next.js",
       "Cloud Functions",
-      "IoT Integration",
+      "Push Notifications",
+      "Getx",
     ],
     gradient: "from-primary to-secondary",
     borderColor: "primary",
@@ -107,7 +108,7 @@ const projects = [
     description:
       "A feature-rich electronics marketplace with AR product visualization, price comparison, and personalized recommendations powered by AI.",
     icon: "🛍️",
-    tags: ["Next.js", "Firebase", "Stripe", "AR Integration"],
+    tags: ["Next.js", "Firebase", "Stripe"],
     gradient: "from-secondary to-accent",
     borderColor: "secondary",
   },

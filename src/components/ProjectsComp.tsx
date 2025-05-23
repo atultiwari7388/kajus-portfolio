@@ -3,90 +3,53 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-// Project data array remains the same
 // Project data array
 const projects = [
   {
     id: 1,
-    title: "WindayRoot - Smart Home Automation",
+    title: "Journey Junction - Travel Social Platform",
     description:
-      "A cutting-edge IoT platform enabling users to control their entire home ecosystem through an intuitive mobile interface. Features include smart device integration, energy monitoring, and AI-powered automation routines.",
-    icon: "🏠",
-    tags: ["Flutter", "Provider", "Firebase"],
+      "A travel storytelling platform where users can share their journey experiences through blogs and stories. Includes social features like user profiles, follow system, and real-time updates across web and app.",
+    icon: "🧳",
+    tags: [
+      "Next.js",
+      "Flutter",
+      "Firebase",
+      "Cloud Functions",
+      "Push Notifications",
+    ],
     gradient: "from-primary to-secondary",
     borderColor: "primary",
   },
   {
     id: 2,
-    title: "NearTake - Revolutionary Food Delivery",
+    title: "Rozgaar - Resume Upload Portal",
     description:
-      "A seamless food delivery ecosystem connecting users, restaurants, and delivery partners. Features real-time order tracking, AI-powered delivery optimization, and integrated payment solutions.",
-    icon: "🍽️",
-    tags: [
-      "Flutter",
-      "Getx",
-      "REST APIs",
-      "Push Notifications",
-      "Google Maps",
-      "Payment Gateway",
-    ],
+      "A basic yet functional job application platform where users can upload their resumes and admins can download them for recruitment purposes. Focused on simplicity and efficient resume management.",
+    icon: "📄",
+    tags: ["Next.js", "Firebase"],
     gradient: "from-secondary to-accent",
     borderColor: "secondary",
   },
   {
     id: 3,
-    title: "TruthTaker - Digital News Platform",
+    title: "Family Alert - Emergency Insurance Network",
     description:
-      "A modern news platform revolutionizing local journalism with AI-powered content curation, real-time analytics, and interactive community surveys. Supports multi-city content management.",
-    icon: "📰",
+      "A life-saving voice-call solution for accident victims. Users register, buy vehicle insurance, and create a 3-member emergency group. A QR code is generated and placed on the vehicle. In emergencies, anyone can scan the code to call group members directly.",
+    icon: "🚨",
     tags: [
-      "Flutter",
+      "Next.js",
+      "ZegoCloud",
       "Firebase",
-      "Push Notifications",
       "Cloud Functions",
-      "Analytics",
+      "Push Notifications",
     ],
     gradient: "from-accent to-primary",
     borderColor: "accent",
   },
+
   {
     id: 4,
-    title: "PikDop - Urban Mobility Solution",
-    description:
-      "An all-in-one urban transportation platform offering ride-hailing, parcel delivery, and auto services. Features dynamic pricing, route optimization, and real-time vehicle tracking.",
-    icon: "🚗",
-    tags: [
-      "Flutter",
-      "Firebase",
-      "Push Notifications",
-      "Getx",
-      "Maps Integration",
-    ],
-    gradient: "from-primary to-secondary",
-    borderColor: "primary",
-  },
-  {
-    id: 5,
-    title: "FoodOTG - Cloud Kitchen Platform",
-    description:
-      "A comprehensive cloud kitchen management system with integrated order processing, kitchen display systems, and delivery logistics. Supports multiple brands under one roof.",
-    icon: "👨‍🍳",
-    tags: ["Flutter", "Firebase", "Cloud Functions", "Real-time Analytics"],
-    gradient: "from-secondary to-accent",
-    borderColor: "secondary",
-  },
-  {
-    id: 6,
-    title: "QuickMart - Instant Grocery Delivery",
-    description:
-      "A lightning-fast grocery delivery platform promising delivery within 15 minutes. Features inventory management, dark store operations, and predictive stocking algorithms.",
-    icon: "🛒",
-    tags: ["Flutter", "Firebase", "Cloud Functions"],
-    gradient: "from-accent to-primary",
-    borderColor: "accent",
-  },
-  {
-    id: 7,
     title: "RabbitServices - Fleet Management",
     description:
       "A comprehensive fleet management solution for truck maintenance and repairs. Includes real-time vehicle diagnostics, mechanic dispatch, and preventive maintenance scheduling.",
@@ -103,7 +66,87 @@ const projects = [
     borderColor: "primary",
   },
   {
+    id: 5,
+    title: "WindayRoot - Smart Home Automation",
+    description:
+      "A cutting-edge IoT platform enabling users to control their entire home ecosystem through an intuitive mobile interface. Features include smart device integration, energy monitoring, and AI-powered automation routines.",
+    icon: "🏠",
+    tags: ["Flutter", "Provider", "Firebase"],
+    gradient: "from-primary to-secondary",
+    borderColor: "primary",
+  },
+  {
+    id: 6,
+    title: "NearTake - Revolutionary Food Delivery",
+    description:
+      "A seamless food delivery ecosystem connecting users, restaurants, and delivery partners. Features real-time order tracking, AI-powered delivery optimization, and integrated payment solutions.",
+    icon: "🍽️",
+    tags: [
+      "Flutter",
+      "Getx",
+      "REST APIs",
+      "Push Notifications",
+      "Google Maps",
+      "Payment Gateway",
+    ],
+    gradient: "from-secondary to-accent",
+    borderColor: "secondary",
+  },
+  {
+    id: 7,
+    title: "TruthTaker - Digital News Platform",
+    description:
+      "A modern news platform revolutionizing local journalism with AI-powered content curation, real-time analytics, and interactive community surveys. Supports multi-city content management.",
+    icon: "📰",
+    tags: [
+      "Flutter",
+      "Firebase",
+      "Push Notifications",
+      "Cloud Functions",
+      "Analytics",
+    ],
+    gradient: "from-accent to-primary",
+    borderColor: "accent",
+  },
+  {
     id: 8,
+    title: "PikDop - Urban Mobility Solution",
+    description:
+      "An all-in-one urban transportation platform offering ride-hailing, parcel delivery, and auto services. Features dynamic pricing, route optimization, and real-time vehicle tracking.",
+    icon: "🚗",
+    tags: [
+      "Flutter",
+      "Firebase",
+      "Push Notifications",
+      "Getx",
+      "Maps Integration",
+    ],
+    gradient: "from-primary to-secondary",
+    borderColor: "primary",
+  },
+  {
+    id: 9,
+    title: "FoodOTG - Cloud Kitchen Platform",
+    description:
+      "A comprehensive cloud kitchen management system with integrated order processing, kitchen display systems, and delivery logistics. Supports multiple brands under one roof.",
+    icon: "👨‍🍳",
+    tags: ["Flutter", "Firebase", "Cloud Functions", "Real-time Analytics"],
+    gradient: "from-secondary to-accent",
+    borderColor: "secondary",
+  },
+  {
+    id: 10,
+    title: "QuickMart - Instant Grocery Delivery",
+    description:
+      "A lightning-fast grocery delivery platform promising delivery within 15 minutes. Features inventory management, dark store operations, and predictive stocking algorithms.",
+    icon: "🛒",
+    tags: ["Flutter", "Firebase", "Cloud Functions"],
+    gradient: "from-accent to-primary",
+    borderColor: "accent",
+  },
+
+  {
+    id: 11,
     title: "TechBazaar - E-Commerce Platform",
     description:
       "A feature-rich electronics marketplace with AR product visualization, price comparison, and personalized recommendations powered by AI.",
@@ -113,7 +156,7 @@ const projects = [
     borderColor: "secondary",
   },
   {
-    id: 9,
+    id: 12,
     title: "OneShop - Hyperlocal Delivery",
     description:
       "An ultra-fast delivery platform connecting local stores with customers. Features real-time inventory sync, smart delivery routing, and automated dispatch system.",
@@ -123,7 +166,7 @@ const projects = [
     borderColor: "accent",
   },
   {
-    id: 10,
+    id: 13,
     title: "Awiskar - EdTech Revolution",
     description:
       "An innovative education platform featuring interactive video lessons, real-time progress tracking, and AI-powered personalized learning paths.",

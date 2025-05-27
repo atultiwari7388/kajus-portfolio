@@ -67,9 +67,8 @@ const projects = [
   },
   {
     id: 5,
-    title: "WindayRoot - Smart Home Automation",
-    description:
-      "A cutting-edge IoT platform enabling users to control their entire home ecosystem through an intuitive mobile interface. Features include smart device integration, energy monitoring, and AI-powered automation routines.",
+    title: "WindayRoot",
+    description: "",
     icon: "🏠",
     tags: ["Flutter", "Provider", "Firebase"],
     gradient: "from-primary to-secondary",

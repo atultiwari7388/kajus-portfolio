@@ -78,7 +78,7 @@ const projects = [
     id: 6,
     title: "NearTake - Revolutionary Food Delivery",
     description:
-      "A seamless food delivery ecosystem connecting users, restaurants, and delivery partners. Features real-time order tracking, AI-powered delivery optimization, and integrated payment solutions.",
+      "A seamless food delivery ecosystem connecting users, restaurants, and delivery partners. Features real-time order tracking, delivery optimization, and integrated payment solutions.",
     icon: "🍽️",
     tags: [
       "Flutter",
@@ -95,7 +95,7 @@ const projects = [
     id: 7,
     title: "TruthTaker - Digital News Platform",
     description:
-      "A modern news platform revolutionizing local journalism with AI-powered content curation, real-time analytics, and interactive community surveys. Supports multi-city content management.",
+      "A modern news platform revolutionizing local journalism with content curation, real-time analytics, and interactive community surveys. Supports multi-city content management.",
     icon: "📰",
     tags: [
       "Flutter",

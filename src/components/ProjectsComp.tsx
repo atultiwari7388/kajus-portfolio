@@ -177,197 +177,133 @@ const projects = [
 ];
 
 export default function ProjectsComp() {
-  const [visibleProjects, setVisibleProjects] = useState(3);
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [visibleProjects, setVisibleProjects] = useState(6);
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const categories = ["All", "Flutter", "Next.js", "Firebase", "Full Stack"];
+
+  const filteredProjects =
+    activeCategory === "All"
+      ? projects.slice(0, visibleProjects)
+      : projects
+          .filter((project) =>
+            project.tags.some((tag) =>
+              tag.toLowerCase().includes(activeCategory.toLowerCase())
+            )
+          )
+          .slice(0, visibleProjects);
 
   const loadMore = () => {
-    setVisibleProjects((prev) => Math.min(prev + 3, projects.length));
+    setVisibleProjects((prev) => prev + 3);
   };
 
   return (
-    <section
-      id="projects"
-      className="py-32 bg-base-100 relative overflow-hidden"
-    >
-      {/* Animated background elements */}
-      <div className="absolute top-20 right-20 w-[40rem] h-[40rem] rounded-full border-8 border-dashed border-primary/20 blur-md animate-pulse" />
-      <div className="absolute bottom-10 left-10 w-[30rem] h-[30rem] rounded-full bg-gradient-to-r from-secondary/10 to-accent/10 blur-3xl animate-float" />
-      <div className="absolute top-1/3 left-1/4 w-[20rem] h-[20rem] rounded-full bg-primary/5 blur-xl animate-float-slow" />
-
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-6xl font-black mb-6 bg-gradient-to-r from-primary via-purple-500 to-secondary bg-clip-text text-transparent drop-shadow-lg tracking-tight">
-            Project Showcase
+    <section id="projects" className="py-20 bg-base-100">
+      <div className="container mx-auto px-4">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <span className="text-sm font-bold tracking-wider text-blue-600 uppercase">
+            My Work
+          </span>
+          <h2 className="text-4xl font-bold mt-2 text-gray-900 dark:text-white">
+            Project Portfolio
           </h2>
-          <p className="text-base-content/70 text-xl max-w-4xl mx-auto leading-relaxed font-light">
-            Explore my portfolio of innovative solutions across mobile, web, AI,
-            and IoT technologies
+          <div className="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
+          <p className="text-lg text-gray-600 dark:text-gray-300 mt-6 max-w-2xl mx-auto">
+            Selected projects showcasing my expertise in Flutter and Next.js
+            development
           </p>
-        </motion.div>
+        </div>
 
-        {/* Enhanced Project Timeline */}
-        <div className="max-w-[80%] mx-auto relative">
-          {/* Animated timeline line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-accent">
-            {projects.slice(0, visibleProjects).map((_, index) => (
-              <motion.div
-                key={index}
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="absolute w-5 h-5 bg-gradient-to-br from-primary to-secondary rounded-full -left-2.5 flex items-center justify-center"
-                style={{ top: `${(index * 100) / (visibleProjects - 1)}%` }}
-              >
-                <div className="w-3 h-3 bg-white rounded-full" />
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Projects */}
-          {projects.slice(0, visibleProjects).map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              onMouseEnter={() => setHoveredProject(project.id)}
-              onMouseLeave={() => setHoveredProject(null)}
-              className={`flex items-center gap-8 mb-24 ${
-                index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+        {/* Category Filters */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => {
+                setActiveCategory(category);
+                setVisibleProjects(6);
+              }}
+              className={`px-5 py-2 rounded-full font-medium transition-all ${
+                activeCategory === category
+                  ? "bg-blue-600 text-white shadow-md"
+                  : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
               }`}
             >
-              {/* Enhanced Project Card */}
-              <motion.div
-                whileHover={{ y: -5 }}
-                className={`w-[calc(100%-3rem)] p-8 bg-gradient-to-br from-base-200/70 via-base-200/40 to-base-200/70 rounded-3xl backdrop-blur-xl border border-${project.borderColor}/20 hover:border-${project.borderColor}/50 transition-all duration-300 shadow-xl hover:shadow-2xl group relative overflow-hidden`}
-              >
-                {/* Animated background highlight */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
-                />
+              {category}
+            </button>
+          ))}
+        </div>
 
-                <div className="relative z-10 flex items-start gap-6">
-                  <motion.div
-                    animate={{
-                      rotate:
-                        hoveredProject === project.id ? [0, 10, -10, 0] : 0,
-                      scale: hoveredProject === project.id ? [1, 1.1, 1] : 1,
-                    }}
-                    transition={{ duration: 0.6 }}
-                    className="text-6xl p-4 bg-gradient-to-br from-base-300 to-base-200 rounded-xl shadow-md"
-                  >
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              className="group relative overflow-hidden rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300"
+            >
+              {/* Project Header */}
+              <div className={`h-3 bg-gradient-to-r ${project.gradient}`}></div>
+
+              <div className="p-6">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="text-3xl p-3 rounded-lg bg-gray-100 dark:bg-gray-800">
                     {project.icon}
-                  </motion.div>
-                  <div className="flex-1">
-                    <h3
-                      className={`text-3xl font-bold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent mb-3`}
-                    >
-                      {project.title}
-                    </h3>
-                    <p className="text-base-content/80 text-lg leading-relaxed">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-3 mt-5">
-                      {project.tags.map((tag, tagIndex) => (
-                        <motion.span
-                          key={tagIndex}
-                          whileHover={{ scale: 1.05 }}
-                          className={`px-4 py-1.5 text-sm font-medium bg-${project.borderColor}/10 border border-${project.borderColor}/20 rounded-full backdrop-blur-sm hover:bg-${project.borderColor}/20 transition-all`}
-                        >
-                          {tag}
-                        </motion.span>
-                      ))}
-                    </div>
                   </div>
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white mt-2">
+                    {project.title}
+                  </h3>
                 </div>
-              </motion.div>
 
-              {/* Animated Arrow */}
-              <motion.div
-                animate={{
-                  x:
-                    hoveredProject === project.id
-                      ? index % 2 === 0
-                        ? -10
-                        : 10
-                      : 0,
-                  scale: hoveredProject === project.id ? 1.5 : 1,
-                }}
-                className={`text-4xl ${
-                  index % 2 === 0 ? "rotate-180" : ""
-                } text-${project.borderColor}`}
-              >
-                →
-              </motion.div>
+                <p className="text-gray-600 dark:text-gray-300 mb-5">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="text-xs px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Hover Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-black/5 dark:from-black/10 dark:to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </motion.div>
           ))}
         </div>
 
-        {/* Enhanced Load More Button */}
+        {/* Load More Button */}
         {visibleProjects < projects.length && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="flex justify-center mt-16"
-          >
-            <motion.button
+          <div className="text-center mt-12">
+            <button
               onClick={loadMore}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 mx-auto"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                Show More Projects
-                <motion.span
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5 }}
-                >
-                  ↓
-                </motion.span>
-              </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.button>
-          </motion.div>
+              Show More Projects
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
         )}
       </div>
-
-      {/* Add these keyframes to your global CSS */}
-      <style jsx global>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0) rotate(0deg);
-          }
-          50% {
-            transform: translateY(-20px) rotate(2deg);
-          }
-        }
-        @keyframes float-slow {
-          0%,
-          100% {
-            transform: translateY(0) rotate(0deg);
-          }
-          50% {
-            transform: translateY(-10px) rotate(1deg);
-          }
-        }
-        .animate-float {
-          animation: float 8s ease-in-out infinite;
-        }
-        .animate-float-slow {
-          animation: float-slow 12s ease-in-out infinite;
-        }
-      `}</style>
     </section>
   );
 }

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { SwitchTheme } from "./SwitchTheme";
+// import { SwitchTheme } from "./SwitchTheme";
 
 interface HeaderProps {
   scrollToSection: (id: string) => void;
@@ -78,7 +78,7 @@ export default function Header({ scrollToSection }: HeaderProps) {
       </div>
 
       <div className="flex items-center space-x-4">
-        <SwitchTheme />
+        {/* <SwitchTheme /> */}
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

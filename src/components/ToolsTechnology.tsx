@@ -1,143 +1,242 @@
-import { motion } from "framer-motion";
-
 export default function ToolsTechnology() {
   return (
-    <section className="py-20 bg-base-100 relative overflow-hidden">
-      {/* Animated background patterns */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_50%,rgba(66,108,245,0.1),transparent_48%)]" />
-        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_80%_20%,rgba(245,66,224,0.1),transparent_48%)]" />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <motion.span
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="inline-block px-6 py-2 rounded-full bg-primary/10 text-primary font-medium mb-4"
-          >
-            My Arsenal
-          </motion.span>
-          <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-purple-500 to-secondary bg-clip-text text-transparent">
+    <section className="py-20 bg-base-100">
+      <div className="container mx-auto px-4">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <span className="inline-block px-5 py-2 rounded-full bg-blue-100 text-blue-600 font-medium mb-4">
+            My Tech Stack
+          </span>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Tools & Technologies
           </h2>
-          <p className="text-base-content/70 text-xl max-w-3xl mx-auto">
-            Leveraging modern technologies to build powerful digital experiences
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            The powerful technologies I use to build exceptional digital
+            experiences
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl mx-auto">
-          {/* Frontend */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="group p-8 rounded-3xl bg-gradient-to-br from-base-200 to-base-300 border border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5"
-          >
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-                <span className="text-2xl">⚛️</span>
+        {/* Tech Stack Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {/* Frontend Card */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300 group">
+            <div className="h-3 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
+            <div className="p-8">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 text-2xl">
+                  ⚛️
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
+                  Frontend
+                </h3>
               </div>
-              <h3 className="text-3xl font-bold text-primary">Frontend</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  {
+                    name: "Flutter",
+                    icon: "📱",
+                    color:
+                      "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
+                  },
+                  {
+                    name: "Next.js",
+                    icon: "▲",
+                    color:
+                      "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300",
+                  },
+                  {
+                    name: "React",
+                    icon: "⚛️",
+                    color:
+                      "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-400",
+                  },
+                  {
+                    name: "Tailwind",
+                    icon: "🎨",
+                    color:
+                      "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-400",
+                  },
+                  {
+                    name: "TypeScript",
+                    icon: "📘",
+                    color:
+                      "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
+                  },
+                  {
+                    name: "GetX",
+                    icon: "✨",
+                    color:
+                      "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
+                  },
+                ].map((tech) => (
+                  <div
+                    key={tech.name}
+                    className={`flex items-center gap-2 p-2 rounded-lg ${tech.color} transition-all duration-200 hover:scale-[1.03]`}
+                  >
+                    <span className="text-lg">{tech.icon}</span>
+                    <span className="text-sm font-medium">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { name: "React", icon: "⚛️" },
-                { name: "Next.js", icon: "▲" },
-                { name: "Flutter", icon: "🎯" },
-                { name: "Tailwind", icon: "🎨" },
-                { name: "TypeScript", icon: "📘" },
-                { name: "JavaScript", icon: "📘" },
-                { name: "Framer Motion", icon: "🎬" },
-              ].map((tech) => (
-                <motion.div
-                  key={tech.name}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-base-100/50 backdrop-blur-sm hover:bg-base-100 transition-all duration-300"
-                >
-                  <span className="text-xl">{tech.icon}</span>
-                  <span className="text-sm font-semibold">{tech.name}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+          </div>
 
-          {/* Backend */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="group p-8 rounded-3xl bg-gradient-to-br from-base-200 to-base-300 border border-secondary/10 hover:border-secondary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-secondary/5"
-          >
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center">
-                <span className="text-2xl">🚀</span>
+          {/* Backend Card */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300 group">
+            <div className="h-3 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+            <div className="p-8">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 text-2xl">
+                  🚀
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
+                  Backend
+                </h3>
               </div>
-              <h3 className="text-3xl font-bold text-secondary">Backend</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  {
+                    name: "Firebase",
+                    icon: "🔥",
+                    color:
+                      "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400",
+                  },
+                  {
+                    name: "Cloud Functions",
+                    icon: "☁️",
+                    color:
+                      "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
+                  },
+                  {
+                    name: "REST APIs",
+                    icon: "🔌",
+                    color:
+                      "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
+                  },
+                  {
+                    name: "Google Maps",
+                    icon: "🗺️",
+                    color:
+                      "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400",
+                  },
+                  {
+                    name: "Push Notifications",
+                    icon: "🔔",
+                    color:
+                      "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400",
+                  },
+                  {
+                    name: "Node.js",
+                    icon: "🟢",
+                    color:
+                      "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
+                  },
+                ].map((tech) => (
+                  <div
+                    key={tech.name}
+                    className={`flex items-center gap-2 p-2 rounded-lg ${tech.color} transition-all duration-200 hover:scale-[1.03]`}
+                  >
+                    <span className="text-lg">{tech.icon}</span>
+                    <span className="text-sm font-medium">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { name: "Node.js", icon: "🟢" },
-                { name: "Express", icon: "🚂" },
-                { name: "MongoDB", icon: "🍃" },
-                { name: "Firebase", icon: "🔥" },
-                { name: "REST API", icon: "🔌" },
-              ].map((tech) => (
-                <motion.div
-                  key={tech.name}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-base-100/50 backdrop-blur-sm hover:bg-base-100 transition-all duration-300"
-                >
-                  <span className="text-xl">{tech.icon}</span>
-                  <span className="text-sm font-semibold">{tech.name}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+          </div>
 
-          {/* Tools & Deployment */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
-            viewport={{ once: true }}
-            className="group p-8 rounded-3xl bg-gradient-to-br from-base-200 to-base-300 border border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5"
-          >
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-                <span className="text-2xl">🛠️</span>
+          {/* Tools Card */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300 group">
+            <div className="h-3 bg-gradient-to-r from-green-500 to-teal-500"></div>
+            <div className="p-8">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 text-2xl">
+                  🛠️
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
+                  Tools
+                </h3>
               </div>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Tools
-              </h3>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  {
+                    name: "VS Code",
+                    icon: "💻",
+                    color:
+                      "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
+                  },
+                  {
+                    name: "Git/GitHub",
+                    icon: "📚",
+                    color:
+                      "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300",
+                  },
+                  {
+                    name: "Figma",
+                    icon: "🎨",
+                    color:
+                      "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400",
+                  },
+                  {
+                    name: "Postman",
+                    icon: "📡",
+                    color:
+                      "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400",
+                  },
+                  {
+                    name: "Android Studio",
+                    icon: "🤖",
+                    color:
+                      "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
+                  },
+                  {
+                    name: "Jira",
+                    icon: "📊",
+                    color:
+                      "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
+                  },
+                ].map((tech) => (
+                  <div
+                    key={tech.name}
+                    className={`flex items-center gap-2 p-2 rounded-lg ${tech.color} transition-all duration-200 hover:scale-[1.03]`}
+                  >
+                    <span className="text-lg">{tech.icon}</span>
+                    <span className="text-sm font-medium">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { name: "Git", icon: "📚" },
-                { name: "Vercel", icon: "▲" },
-                { name: "VS Code", icon: "💻" },
-                { name: "Figma", icon: "🎨" },
-              ].map((tech) => (
-                <motion.div
-                  key={tech.name}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-base-100/50 backdrop-blur-sm hover:bg-base-100 transition-all duration-300"
-                >
-                  <span className="text-xl">{tech.icon}</span>
-                  <span className="text-sm font-semibold">{tech.name}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+          </div>
+        </div>
+
+        {/* Additional Skills Section */}
+        <div className="mt-16 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto p-8">
+          <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-3">
+            <span className="text-yellow-500">🌟</span>
+            Specialized Skills
+          </h3>
+
+          <div className="flex flex-wrap gap-4">
+            {[
+              "State Management (GetX, Provider)",
+              "UI/UX Design",
+              "API Integration",
+              "Firebase Services",
+              "Google Maps Integration",
+              "Push Notifications",
+              "Payment Gateways",
+              "Performance Optimization",
+              "Clean Architecture",
+              "Debugging",
+            ].map((skill) => (
+              <div
+                key={skill}
+                className="px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium"
+              >
+                {skill}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

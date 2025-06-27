@@ -7,9 +7,9 @@ import AboutComponent from "@/components/AboutComponent";
 import Header from "@/components/Header";
 import Skills from "@/components/Skills";
 import ProjectsComp from "@/components/ProjectsComp";
-import AchievementsComp from "@/components/AchievementsComp";
+// import AchievementsComp from "@/components/AchievementsComp";
 import Contact from "@/components/Contact";
-import ResumeExperience from "@/components/ResumeExperience";
+// import ResumeExperience from "@/components/ResumeExperience";
 import Footer from "@/components/Footer";
 import FollowMe from "@/components/FollowMe";
 import { useEffect, useState } from "react";
@@ -101,10 +101,10 @@ export default function Home() {
       <ProjectsComp />
       <Skills />
       <ProfessionalExperience />
-      <AchievementsComp />
+      {/* <AchievementsComp /> */}
       <ToolsTechnology />
       <TimeLine />
-      <ResumeExperience handleDownloadCV={handleDownloadCV} />
+      {/* <ResumeExperience handleDownloadCV={handleDownloadCV} /> */}
       <PersonalInterest />
       {/* <PricingSection /> */}
       <Contact />

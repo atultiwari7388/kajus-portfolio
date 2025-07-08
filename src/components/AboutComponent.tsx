@@ -65,7 +65,7 @@ export default function AboutComponent() {
           <div className="relative">
             <div className="relative w-full max-w-md mx-auto aspect-square rounded-2xl overflow-hidden border-4 border-white shadow-xl">
               <img
-                src="/3rd.jpg"
+                src="/n_img_2.jpg"
                 alt="Profile"
                 className="w-full h-full object-cover"
               />

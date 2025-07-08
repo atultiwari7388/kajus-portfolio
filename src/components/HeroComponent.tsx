@@ -245,7 +245,7 @@ export default function HeroComponent({
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 p-1 animate-spin-slow [mask-image:linear-gradient(to_bottom,transparent,white_20%,white_80%,transparent)]" />
                 <div className="relative w-full h-full rounded-full overflow-hidden bg-base-100 p-1">
                   <img
-                    src="/3rd.jpg"
+                    src="/n_img.jpg"
                     alt="Atul Tiwari"
                     className="w-full h-full rounded-full object-cover transform hover:scale-105 transition-transform duration-500"
                   />
